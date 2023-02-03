@@ -6,12 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Qna</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+
 </head>
 <body>
     <div style="display:none" id="main">
+        <button id="google-login">login with google</button>
+        <button id="logout">logout</button>
+        <div id="user-info"></div>
 
         <h1>List of questions</h1>
         <input  id="questions-input" type="text">
+        <button id="add-question">Add question</button>
+        
+
         <div id="questions-holder">
             <div class="question"></div>
         </div>

@@ -6,6 +6,7 @@ const questions_holder = document.getElementById('questions-holder')
 const answers_holder = document.getElementById('answers-holder')
 const main = document.getElementById('main')
 const back_btn = document.getElementById('back-to-questions')
+const add_question_btn = document.getElementById('add-question')
 let current_question_obj = null
 
 class Question {
@@ -16,9 +17,6 @@ class Question {
 
 }
 
-
-
-
 let questions_array = [];
 if (localStorage.getItem('questions')){
     questions_array = JSON.parse(localStorage.getItem('questions'))
@@ -26,19 +24,28 @@ if (localStorage.getItem('questions')){
 }
 
 main.style.display = 'block'
+const addnewQuestion = (question_name)=>{
+    if(question_name=='') return
+    let new_question = new Question(question_name)
+    questions_array.push(new_question)
+    questions_input.value = ''
+    saveWork()
+    refreshQuestionsList()
+}
 
-questions_input.addEventListener('keypress',(e)=>{
+
+const listener = (e)=>{
     if(e.key=='Enter'){
+        addnewQuestion(e.target.value)
 
-        let question = new Question(e.target.value)
-        questions_array.push(question)
-        e.target.value = ''
-        saveWork()
-        refreshQuestionsList()
-    }
+        }
+}
+
+questions_input.addEventListener('keypress',listener)
+
+add_question_btn.addEventListener('click',()=>{
+    addnewQuestion(questions_input.value)
 })
-
-
 
 answers_input.addEventListener('keypress',(e)=>{
     if(e.key=='Enter'){

@@ -5,10 +5,11 @@ body,html,input{
 }
 
 .question{
+    border: solid 1px white;
 
 }
 
 .answer{
-
+    border: dotted 1px white;
 }
 
